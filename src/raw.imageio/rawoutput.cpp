@@ -2,6 +2,9 @@
 // SPDX-License-Identifier: BSD-3-Clause
 // https://github.com/OpenImageIO/oiio/blob/master/LICENSE.md
 
+
+#include <OpenImageIO/imageio.h>
+
 #include <memory>
 
 #include <tiffio.h>
@@ -9,9 +12,6 @@
 #if defined(USE_LIBRAW)
 #include <libraw/libraw.h>
 #endif
-
-#include <OpenImageIO/imageio.h>
-#include <OpenImageIO/platform.h>
 
 OIIO_PLUGIN_NAMESPACE_BEGIN
 
