@@ -37,6 +37,9 @@
 #include <OpenImageIO/thread.h>
 #include <OpenImageIO/typedesc.h>
 
+#include <libraw/libraw.h>
+#include <libraw/libraw_version.h>
+
 OIIO_NAMESPACE_BEGIN
 
 class DeepData;
@@ -308,6 +311,7 @@ public:
         /// hard-coded fields described above.  This list may be manipulated
         /// with the `attribute()` and `find_attribute()` methods.
 
+    const libraw_data_t *raw_data;
     ///@}
 
     /// Constructor: given just the data format, set all other fields to
@@ -813,6 +817,10 @@ public:
     AttrDelegate<const ImageSpec> operator[](string_view name) const
     {
         return { this, name };
+    }
+
+    void set_raw(const libraw_data_t *data) {
+        raw_data = data;
     }
 };
 

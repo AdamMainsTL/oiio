@@ -873,6 +873,8 @@ RawInput::open_raw(bool unpack, const std::string& name,
     const libraw_iparams_t& idata(m_processor->imgdata.idata);
     const libraw_colordata_t& color(m_processor->imgdata.color);
 
+    m_spec.set_raw(&m_processor->imgdata);
+
     if (idata.make[0]) {
         m_make = std::string(idata.make);
         m_spec.attribute("Make", idata.make);

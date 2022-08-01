@@ -117,6 +117,7 @@ ImageSpec::ImageSpec(TypeDesc format) noexcept
     , alpha_channel(-1)
     , z_channel(-1)
     , deep(false)
+    , raw_data(nullptr)
 {
 }
 
@@ -143,6 +144,7 @@ ImageSpec::ImageSpec(int xres, int yres, int nchans, TypeDesc format) noexcept
     , alpha_channel(-1)
     , z_channel(-1)
     , deep(false)
+    , raw_data(nullptr)
 {
     default_channel_names();
 }
@@ -170,6 +172,7 @@ ImageSpec::ImageSpec(const ROI& roi, TypeDesc format) noexcept
     , alpha_channel(-1)
     , z_channel(-1)
     , deep(false)
+    , raw_data(nullptr)
 {
     default_channel_names();
 }
