@@ -11,6 +11,7 @@
 #endif
 
 #include <OpenImageIO/imageio.h>
+#include <OpenImageIO/platform.h>
 
 OIIO_PLUGIN_NAMESPACE_BEGIN
 
