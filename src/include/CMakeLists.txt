@@ -56,6 +56,7 @@ install (FILES ${detail_headers}
          DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}/detail
          COMPONENT developer)
 
+set(FMT_INCLUDES "${fmt_INCLUDE_DIR}")
 set (fmt_headers
         ${FMT_INCLUDES}/fmt/core.h
         ${FMT_INCLUDES}/fmt/format-inl.h

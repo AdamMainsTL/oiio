@@ -2,10 +2,10 @@
 # SPDX-License-Identifier: BSD-3-Clause
 # https://github.com/OpenImageIO/oiio
 
-if (Libheif_FOUND)
+if (libheif_FOUND)
     add_oiio_plugin (heifinput.cpp heifoutput.cpp
                      INCLUDE_DIRS ${LIBHEIF_INCLUDES}
-                     LINK_LIBRARIES ${LIBHEIF_LIBRARIES}
+                     LINK_LIBRARIES libheif::libheif
                      DEFINITIONS "-DUSE_HEIF=1")
 else ()
     message (WARNING "heif plugin will not be built")

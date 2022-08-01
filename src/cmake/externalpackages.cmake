@@ -46,7 +46,7 @@ endif ()
 if (MSVC)
     # Not linking Boost as static libraries: either an explicit setting or LINKSTATIC is FALSE:
     if (NOT Boost_USE_STATIC_LIBS)
-        add_definitions (-DBOOST_ALL_DYN_LINK=1)
+        # add_definitions (-DBOOST_ALL_DYN_LINK=1)
     endif ()
 endif ()
 
@@ -109,7 +109,7 @@ if (CMAKE_COMPILER_IS_CLANG AND OPENEXR_VERSION VERSION_LESS 2.3)
     add_compile_options (-Wno-deprecated-register)
 endif ()
 if (MSVC AND NOT LINKSTATIC)
-    add_definitions (-DOPENEXR_DLL) # Is this needed for new versions?
+    # add_definitions (-DOPENEXR_DLL) # Is this needed for new versions?
 endif ()
 
 if (OPENEXR_VERSION VERSION_GREATER_EQUAL 2.5.99)
@@ -200,19 +200,19 @@ if (ENABLE_FIELD3D)
 endif ()
 
 # For HEIF/HEIC/AVIF formats
-checked_find_package (Libheif VERSION_MIN 1.3
+checked_find_package (libheif VERSION_MIN 1.3
                       RECOMMEND_MIN 1.7
                       RECOMMEND_MIN_REASON "for AVIF support")
 if (APPLE AND LIBHEIF_VERSION VERSION_GREATER_EQUAL 1.10 AND LIBHEIF_VERSION VERSION_LESS 1.11)
     message (WARNING "Libheif 1.10 on Apple is known to be broken, disabling libheif support")
-    set (Libheif_FOUND 0)
+    set (libheif_FOUND 0)
 endif ()
 
-checked_find_package (LibRaw
+checked_find_package (libraw
                       RECOMMEND_MIN 0.18
                       RECOMMEND_MIN_REASON "for ACES support and better camera metadata"
                       PRINT LibRaw_r_LIBRARIES)
-if (LibRaw_FOUND AND LibRaw_VERSION VERSION_LESS 0.20 AND CMAKE_CXX_STANDARD VERSION_GREATER_EQUAL 17)
+if (libraw_FOUND AND LibRaw_VERSION VERSION_LESS 0.20 AND CMAKE_CXX_STANDARD VERSION_GREATER_EQUAL 17)
     message (STATUS "${ColorYellow}WARNING When building for C++17, LibRaw should be 0.20 or higher (found ${LibRaw_VERSION}). You may get errors, depending on the compiler.${ColorReset}")
     # Currently, we issue the above warning and let them take their chances.
     # If we wish to disable the LibRaw<0.20/C++17 combination that may fail,

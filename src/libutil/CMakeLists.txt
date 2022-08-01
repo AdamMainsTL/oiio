@@ -22,7 +22,7 @@ target_link_libraries (OpenImageIO_Util
             $<TARGET_NAME_IF_EXISTS:IlmBase::IlmThread>
             $<TARGET_NAME_IF_EXISTS:IlmBase::Iex>
             # For OpenEXR <= 2.3:
-            ${ILMBASE_LIBRARIES}
+            OpenEXR::OpenEXR
             ${GCC_ATOMIC_LIBRARIES}
         PRIVATE
             ${SANITIZE_LIBRARIES}

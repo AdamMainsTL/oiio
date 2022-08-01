@@ -199,7 +199,7 @@ if (OIIO_BUILD_TOOLS AND NOT BUILD_OIIOUTIL_ONLY)
     add_subdirectory (src/iinfo)
     add_subdirectory (src/maketx)
     add_subdirectory (src/oiiotool)
-    add_subdirectory (src/testtex)
+    # add_subdirectory (src/testtex)
     add_subdirectory (src/iv)
 endif ()
 

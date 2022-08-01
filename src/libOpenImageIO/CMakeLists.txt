@@ -131,7 +131,7 @@ target_link_libraries (OpenImageIO
             $<TARGET_NAME_IF_EXISTS:IlmBase::Imath>
             $<TARGET_NAME_IF_EXISTS:IlmBase::Half>
             # For OpenEXR <= 2.3:
-            ${ILMBASE_LIBRARIES}
+            OpenEXR::OpenEXR
             ${GCC_ATOMIC_LIBRARIES}
         PRIVATE
             # For OpenEXR/Imath 3.x:
@@ -140,8 +140,6 @@ target_link_libraries (OpenImageIO
             $<TARGET_NAME_IF_EXISTS:OpenEXR::IlmImf>
             $<TARGET_NAME_IF_EXISTS:IlmBase::IlmThread>
             $<TARGET_NAME_IF_EXISTS:IlmBase::Iex>
-            # For OpenEXR <= 2.3:
-            ${OPENEXR_LIBRARIES}
             ${OpenCV_LIBRARIES}
             ${SANITIZE_LIBRARIES}
             ${format_plugin_libs} # Add all the target link libraries from the plugins
@@ -155,7 +153,7 @@ target_link_libraries (OpenImageIO
         )
 
 if (FREETYPE_FOUND)
-    target_link_libraries (OpenImageIO PRIVATE ${FREETYPE_LIBRARIES})
+    target_link_libraries (OpenImageIO PRIVATE Freetype::Freetype)
 endif()
 
 if (WIN32)
