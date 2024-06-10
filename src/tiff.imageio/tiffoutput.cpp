@@ -718,13 +718,18 @@ TIFFOutput::open(const std::string& name, const ImageSpec& userspec,
             // User has requested via the "tiff:ColorSpace" attribute that
             // the file be written as color separated channels.
             m_photometric = PHOTOMETRIC_SEPARATED;
-            if (m_spec.format != TypeDesc::UINT8
-                || m_spec.format != TypeDesc::UINT16) {
+
+            if (m_spec.format == TypeDesc::UINT16) {
+                m_bitspersample = 16;
+            } else {
+                // Make everything else UINT8
                 m_spec.format   = TypeDesc::UINT8;
                 m_bitspersample = 8;
-                TIFFSetField(m_tif, TIFFTAG_BITSPERSAMPLE, m_bitspersample);
-                TIFFSetField(m_tif, TIFFTAG_SAMPLEFORMAT, SAMPLEFORMAT_UINT);
             }
+
+            TIFFSetField(m_tif, TIFFTAG_BITSPERSAMPLE, m_bitspersample);
+            TIFFSetField(m_tif, TIFFTAG_SAMPLEFORMAT, SAMPLEFORMAT_UINT);
+
             if (source_is_rgb(m_spec)) {
                 // Case: RGB -> CMYK, do the conversions per pixel
                 m_convert_rgb_to_cmyk = true;
